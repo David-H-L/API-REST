@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "users")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class UserModel {
 
     @Id
@@ -11,8 +12,16 @@ public class UserModel {
     @Column(unique = true, nullable = false)
     private Long id;
 
+    @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false)
+    private int age;
+
+    @Column(unique = true, nullable = false)
     private String email;
+
+    @Column(nullable = false)
     private String password;
 
     public Long getId() {
@@ -46,4 +55,13 @@ public class UserModel {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
 }
