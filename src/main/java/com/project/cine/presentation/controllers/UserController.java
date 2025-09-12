@@ -1,19 +1,21 @@
-package com.project.cine.controllers;
+package com.project.cine.presentation.controllers;
 
 import java.util.ArrayList;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.project.cine.models.UserModel;
-import com.project.cine.services.UserService;
+import com.project.cine.application.services.UserService;
+import com.project.cine.domain.models.UserModel;
 
 @RestController
 @RequestMapping("/users")
 public class UserController {
-    @Autowired
     UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping()
     public ArrayList<UserModel> getUsers() {

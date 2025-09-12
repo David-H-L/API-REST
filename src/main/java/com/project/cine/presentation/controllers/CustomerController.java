@@ -1,20 +1,22 @@
-package com.project.cine.controllers;
+package com.project.cine.presentation.controllers;
 
-import com.project.cine.models.CustomerModel;
-import com.project.cine.services.CustomerService;
+import com.project.cine.application.services.CustomerService;
+import com.project.cine.domain.models.CustomerModel;
 
 import java.util.ArrayList;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/customers")
 public class CustomerController {
 
-    @Autowired
     private CustomerService customerService;
+
+    public CustomerController(CustomerService customerService) {
+        this.customerService = customerService;
+    }
 
     @GetMapping
     public ArrayList<CustomerModel> getAllCustomers() {

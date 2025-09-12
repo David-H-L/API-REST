@@ -1,19 +1,21 @@
-package com.project.cine.services;
+package com.project.cine.application.services;
 
 import java.util.ArrayList;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.project.cine.models.CustomerModel;
-import com.project.cine.repositories.CustomerRepository;
+import com.project.cine.domain.models.CustomerModel;
+import com.project.cine.domain.repositories.CustomerRepository;
 
 @Service
 public class CustomerService {
 
-    @Autowired
     private CustomerRepository customerRepository;
+
+    public CustomerService(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+    }
 
     public ArrayList<CustomerModel> getAllCustomers() {
         return (ArrayList<CustomerModel>) customerRepository.findAll();
