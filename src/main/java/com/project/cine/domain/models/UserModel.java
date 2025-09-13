@@ -1,4 +1,4 @@
-package com.project.cine.models;
+package com.project.cine.domain.models;
 
 import jakarta.persistence.*;
 

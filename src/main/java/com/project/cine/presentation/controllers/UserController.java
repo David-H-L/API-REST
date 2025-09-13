@@ -1,23 +1,25 @@
-package com.project.cine.controllers;
+package com.project.cine.presentation.controllers;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.project.cine.models.UserModel;
-import com.project.cine.services.UserService;
+import com.project.cine.application.dto.UserDto;
+import com.project.cine.application.services.UserService;
+import com.project.cine.domain.models.UserModel;
 
 @RestController
 @RequestMapping("/users")
 public class UserController {
-    @Autowired
     UserService userService;
 
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
     @GetMapping()
-    public ArrayList<UserModel> getUsers() {
-        return userService.getUsers();
+    public ArrayList<UserDto> getUsers() {
+        return userService.getAllUsers();
     }
 
     @PostMapping()
@@ -26,7 +28,7 @@ public class UserController {
     }
 
     @GetMapping(path = "/{id}")
-    public Optional<UserModel> getUserById(@PathVariable("id") Long id) {
+    public UserDto getUserById(@PathVariable("id") Long id) {
         return userService.getUserById(id);
     }
 
