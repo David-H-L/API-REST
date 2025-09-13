@@ -5,10 +5,10 @@ import java.io.Serializable;
 public class CustomerDto implements Serializable {
     final String name;
     final int age;
-    final int email;
+    final String email;
     final int customerPoints;
 
-    public CustomerDto(String name, int age, int email, int customerPoints) {
+    public CustomerDto(String name, int age, String email, int customerPoints) {
         this.name = name;
         this.age = age;
         this.email = email;
@@ -23,7 +23,7 @@ public class CustomerDto implements Serializable {
         return age;
     }
 
-    public int getEmail() {
+    public String getEmail() {
         return email;
     }
 

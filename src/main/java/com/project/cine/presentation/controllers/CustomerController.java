@@ -1,11 +1,10 @@
 package com.project.cine.presentation.controllers;
 
+import com.project.cine.application.dto.CustomerDto;
 import com.project.cine.application.services.CustomerService;
 import com.project.cine.domain.models.CustomerModel;
 
 import java.util.ArrayList;
-import java.util.Optional;
-
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -19,7 +18,7 @@ public class CustomerController {
     }
 
     @GetMapping
-    public ArrayList<CustomerModel> getAllCustomers() {
+    public ArrayList<CustomerDto> getAllCustomers() {
         return customerService.getAllCustomers();
     }
 
@@ -29,7 +28,7 @@ public class CustomerController {
     }
 
     @GetMapping(path = "/{id}")
-    public Optional<CustomerModel> getCustomerById(@PathVariable("id") Long id) {
+    public CustomerDto getCustomerById(@PathVariable("id") Long id) {
         return customerService.getCustomerById(id);
     }
 

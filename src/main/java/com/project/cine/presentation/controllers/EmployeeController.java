@@ -1,10 +1,10 @@
 package com.project.cine.presentation.controllers;
 
+import com.project.cine.application.dto.EmployeeDto;
 import com.project.cine.application.services.EmployeeService;
 import com.project.cine.domain.models.EmployeeModel;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +19,7 @@ public class EmployeeController {
     }
 
     @GetMapping
-    public ArrayList<EmployeeModel> getAllEmployee() {
+    public ArrayList<EmployeeDto> getAllEmployee() {
         return employeeService.getAllEmployee();
     }
 
@@ -29,7 +29,7 @@ public class EmployeeController {
     }
 
     @GetMapping(path = "/{id}")
-    public Optional<EmployeeModel> getEmployeeById(@PathVariable("id") Long id) {
+    public EmployeeDto getEmployeeById(@PathVariable("id") Long id) {
         return employeeService.getEmployeeById(id);
     }
 
