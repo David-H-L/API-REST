@@ -27,8 +27,12 @@ public class TicketModel {
     private LocalTime saleTime;
 
     @ManyToOne
-    @JoinColumn(name = "customer_fk", nullable = false)
+    @JoinColumn(name = "id_customer_fk", nullable = false)
     private CustomerModel customer;
+
+    @ManyToOne
+    @JoinColumn(name = "id_movie_fk", nullable = false)
+    private MovieModel movie;
 
     public Long getIdTicket() {
         return idTicket;
@@ -76,5 +80,13 @@ public class TicketModel {
 
     public void setCustomer(CustomerModel customer) {
         this.customer = customer;
+    }
+
+    public MovieModel getMovie() {
+        return movie;
+    }
+
+    public void setMovie(MovieModel movie) {
+        this.movie = movie;
     }
 }
