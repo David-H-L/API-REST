@@ -34,6 +34,10 @@ public class TicketModel {
     @JoinColumn(name = "id_movie_fk", nullable = false)
     private MovieModel movie;
 
+    @ManyToOne
+    @JoinColumn(name = "id_room_fk", nullable = false)
+    private RoomModel room;
+
     public Long getIdTicket() {
         return idTicket;
     }
@@ -88,5 +92,13 @@ public class TicketModel {
 
     public void setMovie(MovieModel movie) {
         this.movie = movie;
+    }
+
+    public RoomModel getRoom() {
+        return room;
+    }
+
+    public void setRoom(RoomModel room) {
+        this.room = room;
     }
 }
