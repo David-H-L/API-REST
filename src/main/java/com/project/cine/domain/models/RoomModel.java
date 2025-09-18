@@ -4,6 +4,8 @@ import java.util.List;
 
 import jakarta.persistence.*;
 
+@Entity
+@Table(name = "room")
 public class RoomModel {
 
     @Id

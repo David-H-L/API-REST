@@ -28,6 +28,9 @@ public class MovieModel {
     @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TicketModel> tickets;
 
+    @OneToOne(mappedBy = "movie", cascade = CascadeType.ALL, orphanRemoval = true)
+    private ImageModel image;
+
     public Long getIdMovie() {
         return idMovie;
     }
@@ -74,5 +77,13 @@ public class MovieModel {
 
     public void setTickets(List<TicketModel> tickets) {
         this.tickets = tickets;
+    }
+
+    public ImageModel getImage() {
+        return image;
+    }
+
+    public void setImage(ImageModel image) {
+        this.image = image;
     }
 }
