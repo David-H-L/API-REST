@@ -1,9 +1,6 @@
 package com.project.cine.domain.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.PrimaryKeyJoinColumn;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "employee")
@@ -19,6 +16,10 @@ public class EmployeeModel extends UserModel {
 
     @Column(nullable = false)
     private String phoneNumber;
+
+    @ManyToOne
+    @JoinColumn(name = "id_position_fk", nullable = false)
+    private PositionModel position;
 
     public double getSalary() {
         return salary;
@@ -44,4 +45,11 @@ public class EmployeeModel extends UserModel {
         this.phoneNumber = phoneNumber;
     }
 
+    public PositionModel getPosition() {
+        return position;
+    }
+
+    public void setPosition(PositionModel position) {
+        this.position = position;
+    }
 }
