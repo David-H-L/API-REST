@@ -3,9 +3,12 @@ package com.project.cine.application.services;
 import java.util.ArrayList;
 import java.util.Optional;
 
+import org.springframework.stereotype.Service;
+
 import com.project.cine.domain.models.PositionModel;
 import com.project.cine.domain.repositories.PositionRepository;
 
+@Service
 public class PositionService {
 
     private PositionRepository positionRepository;
@@ -27,6 +30,7 @@ public class PositionService {
     }
 
     public boolean deletePosition(Long id) {
+
         try {
             positionRepository.deleteById(id);
             return true;
