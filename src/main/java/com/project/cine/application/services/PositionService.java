@@ -30,7 +30,6 @@ public class PositionService {
     }
 
     public boolean deletePosition(Long id) {
-
         try {
             positionRepository.deleteById(id);
             return true;
