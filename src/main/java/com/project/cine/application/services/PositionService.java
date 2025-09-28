@@ -21,7 +21,7 @@ public class PositionService {
         return (ArrayList<PositionModel>) positionRepository.findAll();
     }
 
-    public Optional<PositionModel> getById(Long id) {
+    public Optional<PositionModel> getPositionById(Long id) {
         return positionRepository.findById(id);
     }
 
