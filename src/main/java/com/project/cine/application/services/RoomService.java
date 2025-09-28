@@ -17,7 +17,7 @@ public class RoomService {
         this.roomRepository = roomRepository;
     }
 
-    public ArrayList<RoomModel> getAllMovies() {
+    public ArrayList<RoomModel> getAllRoom() {
         return (ArrayList<RoomModel>) roomRepository.findAll();
     }
 

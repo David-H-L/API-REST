@@ -1,5 +1,7 @@
 package com.project.cine.domain.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -19,6 +21,7 @@ public class EmployeeModel extends UserModel {
 
     @ManyToOne
     @JoinColumn(name = "id_position_fk", nullable = false)
+    @JsonBackReference
     private PositionModel position;
 
     public double getSalary() {
