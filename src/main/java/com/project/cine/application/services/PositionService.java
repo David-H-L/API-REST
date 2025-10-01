@@ -5,8 +5,11 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.project.cine.application.dto.PositionDto;
 import com.project.cine.domain.models.PositionModel;
 import com.project.cine.domain.repositories.PositionRepository;
+
+import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class PositionService {
@@ -17,12 +20,24 @@ public class PositionService {
         this.positionRepository = positionRepository;
     }
 
-    public ArrayList<PositionModel> getAllPositions() {
-        return (ArrayList<PositionModel>) positionRepository.findAll();
+    public ArrayList<PositionDto> getAllPositions() {
+        ArrayList<PositionModel> AllPositions = (ArrayList<PositionModel>) positionRepository.findAll();
+        ArrayList<PositionDto> positionDto = new ArrayList<>();
+        for (PositionModel position : AllPositions) {
+            positionDto.add(new PositionDto(position.getIdPosition(), position.getName(), position.getDescription()));
+        }
+        return positionDto;
     }
 
-    public Optional<PositionModel> getPositionById(Long id) {
-        return positionRepository.findById(id);
+    public PositionDto getPositionById(Long id) {
+        Optional<PositionModel> position = positionRepository.findById(id);
+        if (position.isEmpty()) {
+            throw new EntityNotFoundException("Position not found with id: " + id);
+        }
+
+        PositionModel positionDto = position.get();
+        return new PositionDto(positionDto.getIdPosition(), positionDto.getName(), positionDto.getDescription());
+
     }
 
     public PositionModel savePosition(PositionModel position) {

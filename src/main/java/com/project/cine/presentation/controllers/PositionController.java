@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.web.bind.annotation.*;
 
+import com.project.cine.application.dto.PositionDto;
 import com.project.cine.application.services.PositionService;
 import com.project.cine.domain.models.PositionModel;
 
@@ -19,7 +20,7 @@ public class PositionController {
     }
 
     @GetMapping
-    public ArrayList<PositionModel> getAllPosition() {
+    public ArrayList<PositionDto> getAllPosition() {
         return positionService.getAllPositions();
     }
 
@@ -29,7 +30,7 @@ public class PositionController {
     }
 
     @GetMapping(path = "/{id}")
-    public Optional<PositionModel> getPositionById(@PathVariable("id") Long id) {
+    public PositionDto getPositionById(@PathVariable("id") Long id) {
         return positionService.getPositionById(id);
     }
 
