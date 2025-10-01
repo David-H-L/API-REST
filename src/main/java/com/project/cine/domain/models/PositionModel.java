@@ -21,7 +21,6 @@ public class PositionModel {
     private String description;
 
     @OneToMany(mappedBy = "position", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
     private List<EmployeeModel> employees;
 
     public Long getIdPosition() {
