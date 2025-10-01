@@ -19,12 +19,12 @@ public class MovieController {
     }
 
     @GetMapping
-    public ArrayList<MovieModel> getAllEmployee() {
+    public ArrayList<MovieModel> getAllMovie() {
         return movieService.getAllMovies();
     }
 
     @PostMapping
-    public MovieModel saveEmployee(@RequestBody MovieModel movie) {
+    public MovieModel saveMovie(@RequestBody MovieModel movie) {
         return movieService.saveMovie(movie);
     }
 
